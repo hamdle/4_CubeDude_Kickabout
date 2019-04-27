@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://GFX/Pitch.material" type="Material" id=1]
 
@@ -10,7 +10,25 @@ size = Vector2( 20, 15 )
 subdivide_width = 0
 subdivide_depth = 0
 
-[node name="Pitch" type="MeshInstance" index="0"]
+[sub_resource type="BoxShape" id=3]
+
+extents = Vector3( 10, 0.1, 7.52533 )
+_sections_unfolded = [ "Resource" ]
+
+[node name="Pitch" type="StaticBody" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0144851, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 7
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0144851, 0 )
 layers = 1
@@ -25,6 +43,12 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0552049, 0 )
+shape = SubResource( 3 )
+disabled = false
 _sections_unfolded = [ "Transform" ]
 
 
