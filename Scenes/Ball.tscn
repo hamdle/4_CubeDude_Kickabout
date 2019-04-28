@@ -43,7 +43,7 @@ linear_velocity = Vector3( 0, 0, 0 )
 linear_damp = -1.0
 angular_velocity = Vector3( 0, 0, 0 )
 angular_damp = -1.0
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Angular", "Axis Lock", "Collision", "Linear", "Transform" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="." index="0"]
 
