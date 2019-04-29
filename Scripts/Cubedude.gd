@@ -14,7 +14,12 @@ func _physics_process(delta):
 	
 func _process(delta):
 	animate()
+	face_forward()
 	
+func face_forward():
+	if not motion.x == 0 or not motion.z == 0:
+		look_at(Vector3(-motion.x, 0, -motion.z) * speed, UP)
+
 func animate():
 	if motion.length() > EPSILON:
 		if !$AnimationPlayer.is_playing():
@@ -24,20 +29,20 @@ func animate():
 	
 func move():
 	if Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"):
-		motion.z = -speed
+		motion.z = -1
 	elif Input.is_action_pressed("ui_down") and not Input.is_action_pressed("ui_up"):
-		motion.z = speed
+		motion.z = 1
 	else:
 		motion.z = 0
 	
 	if Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"):
-		motion.x = -speed
+		motion.x = -1
 	elif Input.is_action_pressed("ui_right") and not Input.is_action_pressed("ui_left"):
-		motion.x = speed
+		motion.x = 1
 	else:
 		motion.x = 0
 	
-	move_and_slide(motion, UP)
+	move_and_slide((motion.normalized() * speed), UP)
 
 func fall():
 	if is_on_floor():
