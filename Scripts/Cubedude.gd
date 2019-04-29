@@ -6,10 +6,21 @@ export var speed = 10
 
 const UP = Vector3(0, 1, 0)
 const GRAVITY = -5
+const EPSILON = 0.000001
 
 func _physics_process(delta):
 	move()
 	fall()
+	
+func _process(delta):
+	animate()
+	
+func animate():
+	if motion.length() > EPSILON:
+		if !$AnimationPlayer.is_playing():
+			$AnimationPlayer.play("Arms Cross Walk")
+	else:
+		$AnimationPlayer.stop();
 	
 func move():
 	if Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"):
