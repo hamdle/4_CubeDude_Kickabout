@@ -41,7 +41,7 @@ script = ExtResource( 1 )
 
 [node name="Ball" parent="." index="1" instance=ExtResource( 3 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38442, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146392, 1.76242, 0 )
 
 [node name="Camera" type="Camera" parent="." index="2"]
 
@@ -64,12 +64,12 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Player1" parent="Players" index="0" instance=ExtResource( 5 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39427, 1, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03897, 0.286959, 0.14415 )
 _sections_unfolded = [ "Axis Lock", "Collision", "Transform" ]
 
 [node name="Player2" parent="Players" index="1" instance=ExtResource( 5 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79976, 0.802722, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.37331, 0.322132, 0.0796959 )
 player_id = 2
 
 [node name="Cube Dube" parent="Players/Player2/Armature/Skeleton" index="0"]
@@ -79,9 +79,11 @@ _sections_unfolded = [ "material" ]
 
 [node name="Goals" type="Node" parent="." index="4"]
 
+editor/display_folded = true
+
 [node name="Goal1" parent="Goals" index="0" instance=ExtResource( 7 )]
 
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -9.27363, -0.0497284, -0.219869 )
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -9.27363, 0.0334, -0.219869 )
 _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Goal" parent="Goals/Goal1" index="0"]
@@ -384,6 +386,8 @@ disabled = false
 
 [node name="Lights" type="Node" parent="." index="6"]
 
+editor/display_folded = true
+
 [node name="DirectionalLight" type="DirectionalLight" parent="Lights" index="0"]
 
 transform = Transform( 0.931157, -0.195186, 0.307976, 0, 0.844652, 0.535316, -0.364618, -0.498463, 0.786504, 9.46942, 8.40672, 12.0038 )
@@ -412,9 +416,32 @@ directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Light", "Shadow" ]
 
+[node name="Timer" type="Timer" parent="." index="7"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = true
+autostart = false
+
+[node name="StartPositions" type="Node" parent="." index="8"]
+
+[node name="BallSpawn" type="Position3D" parent="StartPositions" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.329757, 1.77876, 0 )
+
+[node name="Player1Spawn" type="Position3D" parent="StartPositions" index="1"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.58309, 2.04626, 0 )
+
+[node name="Player2Spawn" type="Position3D" parent="StartPositions" index="2"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84851, 2.04626, 0 )
+
 [connection signal="body_entered" from="Goals/Goal1/GoalDection" to="." method="_on_GoalDection_body_entered" binds= [ 2 ]]
 
 [connection signal="body_entered" from="Goals/Goal2/GoalDection" to="." method="_on_GoalDection_body_entered" binds= [ 1 ]]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 
 [editable path="Players/Player2"]
