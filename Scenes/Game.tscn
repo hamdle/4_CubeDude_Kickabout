@@ -82,6 +82,8 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Bounds" type="Node" parent="." index="5"]
 
+editor/display_folded = true
+
 [node name="BackWall" type="MeshInstance" parent="Bounds" index="0"]
 
 editor/display_folded = true
@@ -368,11 +370,13 @@ disabled = false
 
 [node name="Lights" type="Node" parent="." index="6"]
 
+editor/display_folded = true
+
 [node name="DirectionalLight" type="DirectionalLight" parent="Lights" index="0"]
 
-transform = Transform( 0.822523, -0.304451, 0.480381, 0, 0.844652, 0.535316, -0.568732, -0.44031, 0.694745, 7.90818, 8.40672, 12.0038 )
+transform = Transform( 0.931157, -0.195186, 0.307976, 0, 0.844652, 0.535316, -0.364618, -0.498463, 0.786504, 9.46942, 8.40672, 12.0038 )
 layers = 1
-light_color = Color( 0.980469, 0.937262, 0.83493, 1 )
+light_color = Color( 1, 0.839355, 0.5625, 1 )
 light_energy = 1.5
 light_indirect_energy = 1.0
 light_negative = false
@@ -380,7 +384,7 @@ light_specular = 0.5
 light_bake_mode = 1
 light_cull_mask = -1
 shadow_enabled = true
-shadow_color = Color( 0.105932, 0.00201416, 0.257812, 1 )
+shadow_color = Color( 0.424194, 0.542969, 0, 1 )
 shadow_bias = 0.1
 shadow_contact = 0.0
 shadow_reverse_cull_face = false
